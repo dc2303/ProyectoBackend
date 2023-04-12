@@ -4,13 +4,6 @@ const apicontroller =require("../controllers/apiController")
 const validarID = require("../middleware/validarID")
 const {check} = require("express-validator")
 
-/*
-router.get("/", apicontroller.lista)
-router.post("/", apicontroller.crear)
-router.put("/", apicontroller.editar)
-*/
-
-
 router.get(`/saludo`, apicontroller.saludo)
 router.get(`/user`, apicontroller.user)
 router.get(`/ver`, apicontroller.lista)

@@ -1,13 +1,13 @@
 const {Product} = require("../models/productos")
 module.exports = validarID = async (req, res, next) =>{
     try {
-        const item = await Product.findById(req.params.id)
-        if (item !== null) {
+        const shopp = await Product.findById(req.params.id)
+        if (shopp !== null) {
             next();
         } else {
-            return res.status(501).json({msg: "el id es invalido"})
+            return res.status(503).json({msg: "el id es invalido"})
         }
     } catch (error) {
-        res.status(501).json(error)
+        res.status(503).json(error)
     }
 }
