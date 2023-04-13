@@ -40,7 +40,8 @@ module.exports = {
     async DeleteProduct (req, res){
         await Product.findByIdAndDelete(req.params.id)
         res.json({msg: "el producto se elimino"})
-    }
+    },
 }
+
 
 
