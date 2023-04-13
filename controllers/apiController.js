@@ -2,21 +2,15 @@ const {Product} = require("../models/productos")
 const {validationResult} = require("express-validator")
 
 module.exports = {
-    saludo (req, res) {
-        res.status(200).send(`buenas tardes`)
-    },
-    user (req, res) {
-        res.status(200).send(`buenas noches`)
-    },
-    async lista (req, res) {
+    async listaProduct (req, res) {
         const items = await Product.find()
         res.json({items})
     },
-    async listaUnica (req, res) {
+    async ProductoUnica (req, res) {
         const item = await Product.findById(req.params.id)
         res.json({item})
     },
-    async crear (req, res) {
+    async createProduct (req, res) {
         try { 
             const err = validationResult(req)
             if (err.isEmpty()) {
@@ -30,7 +24,7 @@ module.exports = {
             res.status(401).json(error);
         }
     },
-    async editar (req, res){
+    async UpdateProduct (req, res){
         try {
             const err = validationResult(req)
             if (err.isEmpty()) {
@@ -43,7 +37,7 @@ module.exports = {
             res.json(error)
         }
     },
-    async eliminar (req, res){
+    async DeleteProduct (req, res){
         await Product.findByIdAndDelete(req.params.id)
         res.json({msg: "el producto se elimino"})
     }
